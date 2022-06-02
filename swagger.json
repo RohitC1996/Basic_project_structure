@@ -44,7 +44,10 @@
         ],
         "responses": {
           "200": {
-            "description": "New Staff is created"
+            "description": "New Staff is created",
+            "schema": {
+              "$ref": "#/definitions/res"
+            }
           }
         }
        }
@@ -72,7 +75,10 @@
           ],
           "responses": {
             "200": {
-              "description": "Logged In"
+              "description": "Logged In",
+              "schema": {
+                "$ref": "#/definitions/res"
+              }
             }
           }
         }
@@ -94,7 +100,10 @@
           ],
           "responses": {
             "200": {
-              "escription": "Staff data"
+              "escription": "Staff data",
+              "schema": {
+                "$ref": "#/definitions/res"
+              }
             }
           }
         }
@@ -116,7 +125,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Staff data"
+            "description": "Staff data",
+            "schema": {
+              "$ref": "#/definitions/res"
+            }
           }
         }
       }
@@ -126,6 +138,37 @@
       "definitions": {
         "Staff": {
           "properties": {
+            "FirstName": {
+              "type": "string"
+            },
+            "LastName": {
+              "type": "string"
+            },
+            "Email": {
+              "type": "string"
+            },
+            "Password": {
+              "type": "string"
+            },
+            "Phone": {
+              "type": "number"
+            },
+            "Gender":{
+                "type":"string"
+            },
+            "DOB": {
+                "type":"string",
+                "format":"date"
+            }
+           
+          }
+        },
+        "res": {
+          "properties": {
+            "_id": {
+              "type": "integer",
+              "uniqueItems": true
+          },
             "FirstName": {
               "type": "string"
             },
