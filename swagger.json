@@ -1,0 +1,168 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "4.3.0",
+      "title": "Staff_Module",
+      "description": "You get best here",
+      "license": {
+        "name": "Rohit",
+        "url": "https://epitometechnologies.StaffModule/"
+      }
+    },
+    "host": "localhost:8000",
+    "basePath": "/api",
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+    "/staff/signup": {
+    "post": {
+        "tags": [
+          "Staff API"
+        ],
+        "summary": "Sign up",
+        "description": "Create new Staff in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "type": "object",
+            "description": "Insert Staff data",
+            "schema": {
+              "$ref": "#/definitions/Staff"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New Staff is created"
+          }
+        }
+       }
+      },
+    "/staff/login": {
+        "post": {
+          "tags": [
+            "Staff API"
+          ],
+          "summary": "Login",
+          "description": "login  in system",
+          "parameters": [
+            {
+              "name": "User",
+              "in": "body",
+              "type": "object",
+              "description": "Login Staff ",
+              "schema": {
+                "$ref":"#/definitions/Login"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Logged In"
+            }
+          }
+        }
+      },
+      "/staff/profile/{id}": {
+        "get": {
+          "summary": "Staff data with given ID",
+          "tags": [
+            "Staff API"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of Staff that we want to find",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "escription": "Staff data"
+            }
+          }
+        }
+      },
+      "/staff/delete/{id}": {
+        "delete": {
+        "tags": [
+          "Staff API"
+        ],
+        "summary":"delete Staff data with given ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of Staff that we want to delete",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Staff data"
+          }
+        }
+      }
+    }
+    },
+
+      "definitions": {
+        "Staff": {
+          "properties": {
+            "FirstName": {
+              "type": "string"
+            },
+            "LastName": {
+              "type": "string"
+            },
+            "Email": {
+              "type": "string"
+            },
+            "Password": {
+              "type": "string"
+            },
+            "Phone": {
+              "type": "number"
+            },
+            "Gender":{
+                "type":"string"
+            },
+            "DOB": {
+                "type":"string",
+                "format":"date"
+            }
+           
+          }
+        },
+        "Login": {
+            "properties":{
+              "Email":{
+                "type": "string"
+              },
+              "Password":{
+                "type": "string"
+              }
+            }
+          }
+
+
+      }
+
+ }
