@@ -12,6 +12,9 @@ staffSchema.statics = {
     getById: function(query,cb){
         this.findOne(query,cb)
     }, 
+    getAll: function(query,cb){
+        this.find(query,cb)
+    }, 
     deleteOne: function(query, cb) { 
         this.findOneAndDelete(query,cb);  
     } 

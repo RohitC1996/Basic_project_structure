@@ -11,11 +11,12 @@ const staffSchema = new Schema({
         required: true
     },
     Phone: { 
-        type: String, 
+        type: String,                      
         required: true, 
         trim: true, 
         min: 5, 
-        max: 15 
+        max: 15,
+        unique: true
     },
     Gender: {
         type: String,
@@ -34,6 +35,5 @@ const staffSchema = new Schema({
         type : Date
     }
 })
-
 
 module.exports =  staffSchema 

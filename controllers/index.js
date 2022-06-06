@@ -1,3 +1,4 @@
 module.exports = {
-    staffController : require('./staffController')
+    staffController : require('./staffController'),
+
 }

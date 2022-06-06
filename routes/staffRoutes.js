@@ -1,12 +1,13 @@
 const joi = require('joi')
 joi.objectId = require('joi-objectid')(joi)
 const {staffController}  = require('../controllers/index')
+const user = require('../controllers/testCont')
 const express = require('express')
 const router = express.Router()
 
 router.post('/signup' ,(req, res, next) =>{
     const staffRoute = joi.object().keys({
-        FirstName : joi.string().alphanum().regex(/^[a-zA-Z. ]+$/).min(3).max(20).required(),
+        FirstName : joi.string().regex(/^[a-zA-Z. ]+$/).min(3).max(20).required(),
         LastName : joi.string().alphanum().regex(/^[a-zA-Z. ]+$/).min(3).max(20).required(),
         Email : joi.string().trim(true).email().required(),
         Password : joi.string().min(6).trim(true).required(),
@@ -16,12 +17,12 @@ router.post('/signup' ,(req, res, next) =>{
     })
     const {error} = staffRoute.validate(req.body) 
     if(error){
-        res.status(404).send(error.message)
+        res.send(error.message)
         return
     }
     next();
-}, staffController.SignupStaff)
 
+}, staffController.SignupStaff)
 
 
 ///Login
@@ -35,12 +36,11 @@ router.post('/login',(req, res, next) =>{
    })
    const {error} = Emailvalid.validate(req.body) 
     if(error){
-        res.status(404).send(error.message)
+        res.send(error.message)
         return
     }
     next();
 }, staffController.loginStaff)
-
 
 
 //<<<<<<<-------------Get One user------------->>>>>>>>>>>>>
@@ -51,29 +51,30 @@ router.get('/profile/:id',(req, res, next) =>{
     })
     const {error} = Idvalidate.validate(req.params)
      if(error){
-         res.status(404).send(error.message)
-         return
+         res.send(error.message)   
+         return  
      }
-     next();
+     next()
+     
  }, staffController.staffData)
 
  //<<<<<<<<<<<<----------Delete One User------------->>>>>>>>>>>>>>>>...
 
 router.delete('/delete/:id',(req, res, next) =>{
+   
     const Idvalidate = joi.object({
      id: joi.objectId(), 
     })
+   
     const {error} = Idvalidate.validate(req.params)
      if(error){
-         res.status(404).send(error.message)
+         res.send(error.message)
          return
      }
      next();
  }, staffController.deletestaff)
 
 
+router.get('/', user.userlist)
 
-
-
-
-module.exports = router    
+ module.exports = router    
